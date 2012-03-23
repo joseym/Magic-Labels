@@ -54,6 +54,10 @@
 
 			} );
 
+			// How to handle element clicks
+			// ------------------------------------------
+			// clicking a radiobutton unsets all other labels then sets the clicked element
+			// clicking a checkbox checks to see if the event check or unchecked the button, then triggers the element accordingly
 			$elements.click(function(e){
 
 				$input = $(this);
@@ -84,7 +88,3 @@
 	};
 
 })(jQuery);
-
-$(document).ready(function(){
-	$('.options, .checks').magicLabels();
-});
