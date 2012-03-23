@@ -11,8 +11,8 @@
 
 ```javascript
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/assets/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-<script type="text/javascript" src="js/magiclabels.js"></script>
+<script>window.jQuery || document.write('<script src=/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="/js/magiclabels.js"></script>
 ```
 
 - Make sure your radiobuttons or checkboxes have properly assigned labels
