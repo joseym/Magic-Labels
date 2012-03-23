@@ -7,7 +7,7 @@
 
 ###Setup
 - Download and place the plugin with your other javascripts
-- Place link to plugin at foot of webpage (before closing </body> tag), make sure you called jQuery first.
+- Place link to plugin at foot of webpage (before closing `</body>` tag), make sure you called jQuery first.
 
 ```javascript
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
