@@ -2,12 +2,6 @@
 
 	$.fn.magicLabels = function(options){
 
-		var click = function(element){
-			element.click(function(e){
-				alert(element.attr('id'));
-			});
-		};
-
 		/**
 		 * Get an inputs label
 		 * @param  string id The id of the `input`, this will look for the label with the same `for` attribute
