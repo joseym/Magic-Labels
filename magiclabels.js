@@ -26,6 +26,27 @@
 						$input = $(this);
 						$label( $input.attr('id') ).removeClass('checked');
 					} );
+				},
+
+				/**
+				 * Returns an object containing both the input and its label
+				 * @param  object $element The element that we initialize from. Could be the label or the input
+				 * @return object          object containing the radiobutton/checkbox and it's label
+				 */
+				$getTriggers = function($element){
+				
+					var type = $element[0].tagName.toLowerCase(),
+						items = {};
+
+					if(type === 'input') {
+						items.input = $element;
+						items.label = $label( $element.attr('id') );
+					} else if (type === 'label'){
+						items.input = $('input#' + $element.attr('id'));
+						items.label = $element;
+					}
+
+					return items;
 				}
 			;
 
@@ -40,6 +61,10 @@
 
 				$input = $(this); type = $input.attr('type');
 				var $myLabel = $label( $input.attr('id') );
+
+				// add ML namespaced label
+				$myLabel.addClass('mlabel');
+				$input.addClass('minput');
 
 				// add label disabled state
 				if($input.is(":disabled")) $myLabel.addClass('disabled');
@@ -57,6 +82,49 @@
 				}
 
 			} );
+
+			/**
+			 * Apply Hover State
+			 * Apply hover state from either the input or the label. 
+			 * Applys to both elements
+			 * @return null
+			 */
+			$('.mlabel, .minput').hover(
+
+				function() {
+
+					$input = $(this), $elements = $getTriggers( $(this) );
+					$elements.input.addClass('hover');
+					$elements.label.addClass('hover');
+
+
+				},
+				function() {
+
+					$input = $(this), $elements = $getTriggers( $(this) );
+					$elements.input.removeClass('hover');
+					$elements.label.removeClass('hover');
+
+				}
+
+			);
+
+			/**
+			 * Apply Active State
+			 * Apply active state from either the input or the label. 
+			 * Applys to both elements
+			 * @return null
+			 */
+			$('.mlabel, .minput').mousedown(function(){
+				$input = $(this), $elements = $getTriggers( $(this) );
+				$elements.input.addClass('active');
+				$elements.label.addClass('active');
+			});
+			$('.mlabel, .minput').mouseup(function(){
+				$input = $(this), $elements = $getTriggers( $(this) );
+				$elements.input.removeClass('active');
+				$elements.label.removeClass('active');
+			});
 
 			// How to handle element clicks
 			// ------------------------------------------
