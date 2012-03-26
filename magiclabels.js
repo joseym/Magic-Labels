@@ -16,13 +16,21 @@
 			var $this = $(this),
 				$input, $elements = $this.find('input[type="radio"], input[type="checkbox"]'),
 				type,
-				reset = function(){
+				// reset
+				reset = function(group){
+					// find all elements from the same button group
+					$elements = $this.find('input[name=' + group + ']');
+
+					// remove the checked state
 					$elements.each( function(i) {
 						$input = $(this);
 						$label( $input.attr('id') ).removeClass('checked');
 					} );
 				}
 			;
+
+			// Namespace the plugin for future theme library
+			$this.addClass('magicLabels');
 
 			// Things to do on load
 			// ------------------------------------------
@@ -37,7 +45,6 @@
 
 					// assign checked status
 					$myLabel.addClass('checked');
-
 
 				} else {
 
@@ -54,7 +61,7 @@
 			// clicking a checkbox checks to see if the event check or unchecked the button, then triggers the element accordingly
 			$elements.click(function(e){
 
-				$input = $(this);
+				$input = $(this); type = $input.attr('type');
 				var $myLabel = $label( $input.attr('id') );
 
 				if(type === 'checkbox'){
@@ -69,7 +76,7 @@
 
 				} else if(type === 'radio'){
 
-					reset();
+					reset( $input.attr('name') );
 					$myLabel.addClass('checked');
 
 				}
