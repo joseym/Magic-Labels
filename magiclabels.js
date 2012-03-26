@@ -41,6 +41,9 @@
 				$input = $(this); type = $input.attr('type');
 				var $myLabel = $label( $input.attr('id') );
 
+				// add label disabled state
+				if($input.is(":disabled")) $myLabel.addClass('disabled');
+
 				if($input.is(":checked")){
 
 					// assign checked status
